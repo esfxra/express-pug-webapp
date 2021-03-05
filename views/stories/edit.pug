@@ -1,0 +1,36 @@
+extends ../layouts/dashboard.pug
+
+block content
+  div.container
+    div.section
+      div.box
+        h2.title.is-5 Edit Story
+        form(action=`/stories/edit/${story._id}` method='POST')
+          input(type='hidden' name='_method' value='PUT')
+          div.field
+            label.label Title
+            div.control
+              input.input(id='title' name='title' value=story.title)
+
+          div.field
+            label.label Status
+            div.control
+              div.select.is-fullwidth
+                select(id='status' name='status')
+                  if story.status === 'published'
+                    option(value='published' selected) Published
+                    option(value='draft') Draft
+                  else
+                    option(value='published') Published
+                    option(value='draft' selected) Draft
+
+          div.field
+            label.label Story
+            div.control
+              textarea.textarea(id='body' name='body') #{story.body}
+
+          div.field.is-grouped
+            div.control
+              input.button.is-link(type='submit' value='Save')
+            div.control
+              a.button.is-dark(href='/dashboard') Cancel

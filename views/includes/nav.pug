@@ -1,0 +1,27 @@
+nav.navbar.container(role='navigation' aria-label='main navigation')
+  div.navbar-brand
+    a.navbar-item(href='/')
+      h1.title.is-4.has-text-link
+        div.level.is-mobile
+          div.level-left
+            div.level-item
+              i.fas.fa-book-open
+            div.level-item
+              span Storify
+
+    a.navbar-burger(role='button' aria-label='menu' aria-expanded='false' data-target='navMenu')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+
+  div.navbar-menu(id='navMenu')
+    div.navbar-start
+      a.navbar-item(href='/stories/feed') Feed
+      a.navbar-item(href='/') My Stories
+    div.navbar-end
+      div.navbar-item
+        div.buttons
+          a.button.is-link.is-light(href='/auth/logout')
+            span.icon
+              i.fas.fa-sign-out-alt
+            span Sign out

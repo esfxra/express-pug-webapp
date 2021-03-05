@@ -1,0 +1,50 @@
+extends layouts/dashboard.pug
+
+block content 
+  div.container
+    div.section
+      h2.title.is-4 Dashboard 
+      div.content
+        span Welcome, #{name}
+        br
+        span Here are your stories:
+
+      if stories.length > 0
+        each story in stories 
+          div.card.block              
+            div.card-content
+              //- Title, date, and status
+              a(href=`/stories/show/${story._id}`)
+                h3.title.is-5.story-title #{story.title}
+              div.level.is-mobile.story-info    
+                div.level-left
+                  div.level-item
+                    h4.subtitle.is-6 #{story.createdAt.toDateString()}
+                  div.level-item
+                    if story.status === 'published'
+                      span.tag.is-link #{story.status}  
+                    else
+                      span.tag.is-warning #{story.status} 
+                      
+              //- Story body
+              div.content #{story.body}
+
+              //- Edit and Delete buttons
+              div.field.is-grouped.is-grouped-right
+                div.control
+                  a.button.is-link.is-outlined(href=`/stories/edit/${story._id}`)
+                    i.fas.fa-edit
+                div.control
+                  form(action=`/stories/delete/${story._id}` method='POST')
+                    input(type='hidden' name='_method' value='DELETE')
+                    button.button.is-danger.is-outlined(type='submit')
+                      i.fas.fa-trash
+
+      else
+        p.notification.is-link.is-light You have not created any stories
+
+      a.button.is-link.is-fullwidth(href='/stories/add')
+        span.icon-text
+          span.icon
+            i.fas.fa-plus
+          span Add Story

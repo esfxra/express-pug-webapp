@@ -1,0 +1,31 @@
+extends ../layouts/dashboard.pug
+
+block content
+  div.container
+    div.section
+      div.box
+        h2.title.is-5 New Story
+        form(action='/stories/add' method='POST')
+          div.field
+            label.label Title
+            div.control
+              input.input(id='title' name='title')
+
+          div.field
+            label.label Status
+            div.control
+              div.select.is-fullwidth
+                select(id='status' name='status')
+                  option(value='published') Published
+                  option(value='draft') Draft
+
+          div.field
+            label.label Story
+            div.control
+              textarea.textarea(id='body' name='body')
+
+          div.field.is-grouped
+            div.control
+              input.button.is-link(type='submit' value='Submit')
+            div.control
+              a.button.is-dark(href='/dashboard') Cancel

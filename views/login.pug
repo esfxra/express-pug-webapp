@@ -1,0 +1,25 @@
+extends layouts/login.pug
+
+block content 
+  section.hero.is-fullheight
+    div.hero-body
+      div.container
+        div.columns.is-centered
+          div.column.is-6-tablet.is-4-desktop
+            div.box
+              h1.title.has-text-link
+                div.level.is-mobile
+                  div.level-left
+                    div.level-item
+                      i.fas.fa-book-open
+                    div.level-item
+                      span Storify
+              p.block A virtual space to share stories
+
+              a.button.is-link.is-fullwidth(href='/auth/google')
+                span.icon-text
+                  span.icon
+                    i.fab.fa-google
+                  span Login with Google
+
+

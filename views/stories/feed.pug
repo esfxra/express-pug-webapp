@@ -1,0 +1,23 @@
+extends ../layouts/dashboard.pug
+
+block content
+  div.container
+    div.section
+      h2.title.is-4 Feed
+
+      if stories.length > 0
+        div.columns
+          each story in stories 
+            div.column
+              div.card
+                div.card-header
+                  p.card-header-title #{story.title}
+                  a.card-header-icon(href=`/stories/user/${story.user._id}` title=story.user.displayName)
+                    figure.image.is-32x32
+                      img.is-rounded(src=story.user.image)
+                div.card-content
+                  div.content #{story.body}
+                div.card-footer
+                  a.card-footer-item(href=`/stories/show/${story._id}`) Read more
+      else 
+        p.notification.is-link.is-light There are no stories to display

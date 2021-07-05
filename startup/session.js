@@ -1,5 +1,5 @@
 const session = require('express-session');
-const MongoStore = require('connect-mongo').default;
+const MongoStore = require('connect-mongo');
 
 module.exports = (app) => {
   // Sessions - with a mongo store for storing sessions in the database

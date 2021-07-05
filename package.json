@@ -1,5 +1,5 @@
 {
-  "name": "storify-express-webapp",
+  "name": "express-pug-webapp",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
